@@ -1,6 +1,6 @@
-const Movie = require('..models/Movie'); 
+const Movie = require('../models/Movies'); 
 
-// @desc Takes request, interacts with Model, and sends a response
+// @desc Takes request, interacts with Model/Movies, and sends a response
 // @route POST /api/movies
 
 
