@@ -1,11 +1,14 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const authJwtController = require('./auth_jwt'); // You're not using authController, consider removing it
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
-const User = require('./Users');
-const Movie = require('./Movies'); // You're not using Movie, consider removing it
+const mongoose = require('mongoose'); 
+
+const User = require('./models/Users');
+const Movie = require('./models/Movies'); // You're not using Movie, consider removing it
 
 const app = express();
 app.use(cors());
@@ -13,10 +16,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(passport.initialize());
+app.use('/api/movies', movieRoutes);
 
 const router = express.Router();
 
 // Removed getJSONObjectForMovieRequirement as it's not used
+
+
+ // Moved ConnectDB to Controller
 
 router.post('/signup', async (req, res) => { // Use async/await
   if (!req.body.username || !req.body.password) {
