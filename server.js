@@ -1,5 +1,4 @@
 require('dotenv').config();
-import connectDB from './config/db';
 const express = require('express');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
@@ -15,6 +14,12 @@ const User = require('./models/Users');
 const Movie = require('./models/Movies'); // You're not using Movie, consider removing it
 
 const app = express();
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('✅ Successfully connected to MongoDB!'))
+  .catch((err) => {
+      console.error('❌ Could not connect to MongoDB. Error:', err);
+  });
 
 // Middleware
 app.use(cors());
