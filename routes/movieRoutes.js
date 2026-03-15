@@ -18,15 +18,15 @@ const authJwtController = require('../middleware/auth_jwt');
 router.route('/')
     .get(getMovies)
     //.post(createMovie);  Added authentication to this admin function
-    .post(authJwtController, createMovie); // Includes JwtController
+    .post(authJwtController.isAuthenticated, createMovie); // Includes JwtController
 
 // These are for only api/movies/:id
 router.route('/:id')
     .get(getMovieById)
     // .put(updateMovie)
     // .delete(deleteMovie); Added authentication to these functions
-    .put(authJwtController, updateMovie)
-    .delete(authJwtController,deleteMovie);
+    .put(authJwtController.isAuthenticated, updateMovie)
+    .delete(authJwtController.isAuthenticated,deleteMovie);
 
 module.exports = router; 
 
