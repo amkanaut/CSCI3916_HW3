@@ -38,9 +38,9 @@ const createMovie = async (req, res) => {
  // [x] @desc Return a specific movie based on the :movieparameter(movie.id)
  // route GET api/movies/:id
 
-const getMovieById = async (req, res) => {
+const getMovieByTitle = async (req, res) => {
     try {
-        const movie = await Movie.findById(req.params.id);
+        const movie = await Movie.findByTitle(req.params.title);
 
         if (!movie) {
             return res.status(404).json({ message: 'Movie not found' }); // If it is not associated with a movie, display error
@@ -63,7 +63,7 @@ const getMovieById = async (req, res) => {
 const updateMovie = async (req, res) => {
     try {
         const updatedMovie = await Movie.findByIdAndUpdate(
-            res.params.id,
+            res.params.title,
             req.body,
             { new: true, runValidators: true }
         );
@@ -87,13 +87,13 @@ const updateMovie = async (req, res) => {
 
 const deleteMovie = async (req, res) => {
     try {
-        const deletedMovie = await Movie.findByIdAndDelete(req.params.id);
+        const deletedMovie = await Movie.findByIdAndDelete(req.params.title);
 
         if (!deletedMovie) {
             return res.status(404).json({ message: 'Movie not found' });
         }
 
-        res.status(200).json({ message: 'Movie successfully deleted', id: req.params.id });
+        res.status(200).json({ message: 'Movie successfully deleted', id: req.params.title });
     } catch (error) {
         res.status(500).json({ message: 'Server Error', details: error.message });
     }
@@ -104,5 +104,5 @@ module.exports = {
     createMovie,
     updateMovie,
     deleteMovie,
-    getMovieById
+    getMovieByTitle
 };

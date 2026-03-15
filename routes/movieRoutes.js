@@ -4,7 +4,7 @@ const {
     createMovie,
     getMovies,
     deleteMovie,
-    getMovieById,
+    getMovieByTitle,
     updateMovie
  } = require('../controllers/movieController');
 
@@ -21,12 +21,13 @@ router.route('/')
     .post(authJwtController.isAuthenticated, createMovie); // Includes JwtController
 
 // These are for only api/movies/:id
-router.route('/:id')
-    .get(authJwtController.isAuthenticated, getMovieById)
+router.route('/:title')
+    .get(authJwtController.isAuthenticated, getMovieByTitle)
     // .put(updateMovie)
     // .delete(deleteMovie); Added authentication to these functions
     .put(authJwtController.isAuthenticated, updateMovie)
-    .delete(authJwtController.isAuthenticated,deleteMovie);
+    .delete(authJwtController.isAuthenticated,deleteMovie)
+    .post(authJwtController.isAuthenticated, (req, res) => res.status(405).json({ message: 'FAIL' }));
 
 module.exports = router; 
 
