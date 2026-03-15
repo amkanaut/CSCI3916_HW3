@@ -40,7 +40,7 @@ const createMovie = async (req, res) => {
 
 const getMovieByTitle = async (req, res) => {
     try {
-        const movie = await Movie.findByTitle(req.params.title);
+        const movie = await Movie.findOne({ title: req.params.title });
 
         if (!movie) {
             return res.status(404).json({ message: 'Movie not found' }); // If it is not associated with a movie, display error
@@ -62,22 +62,18 @@ const getMovieByTitle = async (req, res) => {
 
 const updateMovie = async (req, res) => {
     try {
-        const updatedMovie = await Movie.findByIdAndUpdate(
-            res.params.title,
-            req.body,
-            { new: true, runValidators: true }
+        const updatedMovie = await Movie.findOneAndUpdate(
+            { title: req.params.title }, // 1. The filter
+            req.body,                    // 2. The update data
+            { new: true, runValidators: true } // 3. Options
         );
 
         if (!updatedMovie) {
-            return res.status(404).json({ message: 'Movie not found '});
+            return res.status(404).json({ message: 'Movie not found' });
         }
-
         res.status(200).json(updatedMovie);
     } catch (error) {
-        if (error.name === 'ValidationError') {
-            return res.status(400).json({ message: 'Validation failed' , details: error.message });
-        }
-        res.status(500).json({ message: 'Server Error' , details: error.message });
+        res.status(500).json({ message: 'Server Error', details: error.message });
     }
 };
 
@@ -87,13 +83,12 @@ const updateMovie = async (req, res) => {
 
 const deleteMovie = async (req, res) => {
     try {
-        const deletedMovie = await Movie.findByIdAndDelete(req.params.title);
+        const deletedMovie = await Movie.findOneAndDelete({ title: req.params.title });
 
         if (!deletedMovie) {
             return res.status(404).json({ message: 'Movie not found' });
         }
-
-        res.status(200).json({ message: 'Movie successfully deleted', id: req.params.title });
+        res.status(200).json({ message: 'Movie successfully deleted', title: req.params.title });
     } catch (error) {
         res.status(500).json({ message: 'Server Error', details: error.message });
     }
