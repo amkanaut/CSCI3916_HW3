@@ -1,9 +1,11 @@
 require('dotenv').config();
+import connectDB from './config/db';
 const express = require('express');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const mongoose = require('mongoose'); 
+
 
 // Imports
 const connectDB = require('./config/db');
