@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const passport = require('passport');
-const authJwtController = require('./auth_jwt'); // You're not using authController, consider removing it
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const mongoose = require('mongoose'); 
