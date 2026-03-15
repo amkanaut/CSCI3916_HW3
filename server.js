@@ -15,6 +15,8 @@ const Movie = require('./models/Movies'); // You're not using Movie, consider re
 
 const app = express();
 
+console.log("My Mongo URI is:", process.env.MONGO_URI);
+
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ Successfully connected to MongoDB!'))
   .catch((err) => {
