@@ -1,4 +1,5 @@
 require('dotenv').config();
+const connectDB = require('./config/db');
 const express = require('express');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
@@ -6,14 +7,17 @@ const cors = require('cors');
 const mongoose = require('mongoose'); 
 
 
+
 // Imports
-const connectDB = require('./config/db');
+
 const movieRoutes = require('./routes/movieRoutes');
 const authRoutes = require('./routes/authRoutes') 
 const User = require('./models/Users');
 const Movie = require('./models/Movies'); // You're not using Movie, consider removing it
 
 const app = express();
+
+connectDB();
 
 console.log("My Mongo URI is:", process.env.MONGO_URI);
 
