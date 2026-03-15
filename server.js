@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 // Imports
 const connectDB = require('./config/db');
 const movieRoutes = require('./routes/movieRoutes');
-const authRoutes = require('./routes/authRoutes') // TODO 
+const authRoutes = require('./routes/authRoutes') 
 const User = require('./models/Users');
 const Movie = require('./models/Movies'); // You're not using Movie, consider removing it
 
@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Mount Routes
 app.use('/api/movies', movieRoutes); // Movie CRUD file
-app.use('/api/auth', authRoutes); // TODO , handles signup and sign
+app.use('/api/auth', authRoutes); //  handles signup and sign
 
 // Code that starts server
 const PORT = process.env.PORT || 8080; // Define PORT before using it
