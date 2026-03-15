@@ -38,7 +38,7 @@ const signup = async (req, res) => {
 
 const signin = async (req, res) => {
     try {
-        const user = await User.findOne({ username: req.body.username }).select('name username password');
+        const user = await User.findOne({ username: req.body.username }).select('+password');
 
         if (!user) {
             return res.status(401).json({ success: false, msg: 'Authentication failed. User not found.' });
