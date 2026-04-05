@@ -10,10 +10,12 @@ const mongoose = require('mongoose');
 
 // Imports
 
+const reviewRoutes = require('./routes/reviewRoutes');
 const movieRoutes = require('./routes/movieRoutes');
 const authRoutes = require('./routes/authRoutes') 
 const User = require('./models/Users');
 const Movie = require('./models/Movies'); // You're not using Movie, consider removing it
+
 
 const app = express();
 
@@ -36,6 +38,7 @@ app.use(express.urlencoded({ extended: false }));
 // Mount Routes
 app.use('/api/movies', movieRoutes); // Movie CRUD file
 app.use('/api/auth', authRoutes); //  handles signup and sign
+app.use('/api/reviews', reviewRoutes); // Handles review CRUD
 
 // Code that starts server
 const PORT = process.env.PORT || 8080; // Define PORT before using it
