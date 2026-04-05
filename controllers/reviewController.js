@@ -1,6 +1,7 @@
 const { MongoGridFSChunkError } = require('mongodb');
 const Review = require('../models/Reviews');
 const Movie = require('../models/Movies');
+const trackMovieEvent = require('../middleware/analytics')
 
 // @desc Created new controller for Review methods
 // @route POST api/reviews
@@ -28,6 +29,13 @@ const postReviews = async (req, res) => {
     });
         await newReview.save();
         res.status(201).json({ message: 'Review created!' });
+
+        // Analytics EC
+        await trackMovieEvent(
+            movie,
+            'post .reviews',
+            'API request for movie review'
+        );
 
     } catch (error) {
         res.status(400).json({ 

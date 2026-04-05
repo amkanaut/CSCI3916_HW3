@@ -1,8 +1,22 @@
-# Assignment Three - Amgalan Baasanbat
-## [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/34779736-498713da-fd4a-4337-a619-e56df6e1efdd?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D34779736-498713da-fd4a-4337-a619-e56df6e1efdd%26entityType%3Dcollection%26workspaceId%3D1e579f4c-2a38-49ae-93dd-8a2ff98c9101#?env%5BBaasanbat-hw3%5D=W3sia2V5IjoidXJsIiwidmFsdWUiOiJodHRwOi8vbG9jYWxob3N0OjgwODAiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoiZGVmYXVsdCIsInNlc3Npb25WYWx1ZSI6IiIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoiIiwic2Vzc2lvbkluZGV4IjowfSx7ImtleSI6Imp3dF90b2tlbiIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6ImRlZmF1bHQiLCJzZXNzaW9uVmFsdWUiOiJKV1QuLi4iLCJjb21wbGV0ZVNlc3Npb25WYWx1ZSI6IkpXVCBleUpoYkdjaU9pSklVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKcFpDSTZJalk1WWpjd09HRTBNR1U0WWpaa09XRmlOekptTkRabE9TSXNJblZ6WlhKdVlXMWxJam9pZFhObGNsOHdaSGhtWVhaME15SXNJbWxoZENJNk1UYzNNell3TlRneU15d2laWGh3SWpveE56Y3pOakE1TkRJemZRLjdneEtqMGdraXg0V3VoNlV2bTluVXk2Ymlyb05EWEZWYlhrRnpUSTN3Q0kiLCJzZXNzaW9uSW5kZXgiOjF9LHsia2V5IjoicmFuZG9tVXNlciIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6ImFueSIsInNlc3Npb25WYWx1ZSI6InVzZXJfMGR4ZmF2dDMiLCJjb21wbGV0ZVNlc3Npb25WYWx1ZSI6InVzZXJfMGR4ZmF2dDMiLCJzZXNzaW9uSW5kZXgiOjJ9LHsia2V5IjoicmFuZG9tUGFzcyIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6ImFueSIsInNlc3Npb25WYWx1ZSI6InBhc3NfMGR4ZmF2dDMiLCJjb21wbGV0ZVNlc3Npb25WYWx1ZSI6InBhc3NfMGR4ZmF2dDMiLCJzZXNzaW9uSW5kZXgiOjN9XQ==)
+# Assignment FOUR - Amgalan Baasanbat
+## Explanation
+
+Created a new collection in MongoDB to hold reviews, and associated it with Movies collection. Added new invalidation rules for Reviews collection
+Was tested with manual document. 
+
+Added a reviewRoute.js to routes, and reviewCOntroller.js to Controller
+Edited HW3 files to work with new additions
+
+Modified getMovies to aggregate reviews with it, with ?reviews=true parameter
+
+Movies collection now able to hold multiple reviews, testable with Aggregate GET call on Postman
+
 
 ## Environment settings
 
 REACT URI = https://csc3916-react19-5sy6.onrender.com
 HW3 URI = https://csci3916-hw3-f59k.onrender.com
+
+## Postman collection and environemnt exports included in REPO
+
 
