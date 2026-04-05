@@ -26,9 +26,9 @@ const postReviews = async (req, res) => {
             review: req.body.review,
             rating: req.body.rating
     });
-        const savedReview = await newReview.save();
+        await newReview.save();
         res.status(201).json({ message: 'Review created!' });
-        
+
     } catch (error) {
         res.status(400).json({ 
             message: 'Failed to create review due to invalid data', 
